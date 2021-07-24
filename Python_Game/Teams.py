@@ -156,7 +156,8 @@ class Terrorist(Team):
 			pers = []
 			if self.cnt_team > 1:
 				pers = self.arr_pers[random.randint(1, self.cnt_team - 1 )]
-			pers = self.arr_pers[0]
+			else:
+				pers = self.arr_pers[0]
 			i.attack(pers)	
 
 	def attack(self, obj:Team):
