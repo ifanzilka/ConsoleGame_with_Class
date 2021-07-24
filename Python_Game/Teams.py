@@ -13,13 +13,15 @@ class Team(metaclass = ABCMeta):
 	@abstractmethod	
 	def takedamage(self, obj):
 		pass
-
+	
+	@property
 	def get_full_damage_team(self):
 		damage = 0
 		for i in self.arr_pers:
 			damage += i.weapon.full_damage
 		return (damage)	
 
+	@property
 	def cnt_in_live(self)-> int:
 		cnt = 0
 		for i in self.arr_pers:
@@ -27,6 +29,7 @@ class Team(metaclass = ABCMeta):
 				cnt += 1
 		return (cnt)
 
+	@property
 	def get_xp_team(self):
 		xp = 0
 		for i in self.arr_pers:
@@ -48,9 +51,9 @@ class Team(metaclass = ABCMeta):
 		st += GRAY
 		st += "Name Team: " + self.name_team + '\n'
 		st += "Count person: " + str(self.cnt_team) + '\n'
-		st += "Full famage team: " + str(self.get_full_damage_team()) + '\n'
-		st += "Live person: " + str(self.cnt_in_live()) + '\n'
-		st += "Xp in team: " + str(self.get_xp_team()) + '\n'
+		st += "Full famage team: " + str(self.get_full_damage_team) + '\n'
+		st += "Live person: " + str(self.cnt_in_live) + '\n'
+		st += "Xp in team: " + str(self.get_xp_team) + '\n'
 		st += FONE
 		return (st)
 
@@ -80,6 +83,7 @@ class FCB(Team):
 		ls = self.get_army_weapon()
 		return (ls[0])
 
+	@property
 	def __get_cnt_no_empty_pers(self):
 		cnt = 0
 		ls =  self.get_army_weapon()
@@ -88,6 +92,7 @@ class FCB(Team):
 				cnt += 1
 		return (cnt)
 
+	@property
 	def __get_max_xp_pers(self)-> Person:
 		ls = self.get_army_xp()
 		return (ls[0])
@@ -95,7 +100,7 @@ class FCB(Team):
 	def takedamage(self, team:List[Person]):
 		print(RED + self.name_team + ": AAA attack for me!!!!" + FONE)
 		for i in team:
-			pers = self.__get_max_xp_pers()
+			pers = self.__get_max_xp_pers
 			i.attack(pers)	
 
 	def attack(self, obj:Team):
@@ -104,7 +109,7 @@ class FCB(Team):
 			print(RED + "Ammunition end(")
 		else:
 			ls = self.get_army_weapon()
-			cnt_pers = random.randint(1, self.__get_cnt_no_empty_pers())
+			cnt_pers = random.randint(1, self.__get_cnt_no_empty_pers)
 			mini_team = ls[:cnt_pers]
 			print(GREEN + self.name_team + ": Go to attack in " + str(cnt_pers) + " pers")
 			obj.takedamage(mini_team)
@@ -140,6 +145,7 @@ class Terrorist(Team):
 				cnt += 1
 		return (cnt)
 
+	@property
 	def __get_max_xp_pers(self)-> Person:
 		ls = self.get_army_xp()
 		return (ls[0])
@@ -147,7 +153,10 @@ class Terrorist(Team):
 	def takedamage(self, team:List[Person]):
 		print(RED + self.name_team + ": AAA attack for me!!!!" + FONE)
 		for i in team:
-			pers = self.arr_pers[random.randint(1, self.cnt_team - 1)]
+			pers = []
+			if self.cnt_team > 1:
+				pers = self.arr_pers[random.randint(1, self.cnt_team - 1 )]
+			pers = self.arr_pers[0]
 			i.attack(pers)	
 
 	def attack(self, obj:Team):
