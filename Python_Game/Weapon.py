@@ -1,9 +1,9 @@
-from Color import *
+from Color import Color
 import time
 import random
 
 from abc	import ABCMeta, abstractmethod, abstractproperty
-from typing import TypeVar
+from typing import ClassVar, TypeVar
 
 Weapon = TypeVar('Weapon')
 
@@ -23,13 +23,13 @@ class Weapon(metaclass = ABCMeta):
 	
 	def __str__(self) -> str:
 		st = ''
-		st += GRAY
+		st += Color.GRAY
 		st += "Name Weapon: " + self.name + '\n'
 		st += "Accuracy: " + str(self.accuracy) + '\n'
 		st += "Damage: " + str(self.damage) + '\n'
 		st += "Time_recharge: " + str(self.time_recharge) + '\n'
 		st += "Ammunition: " + str(self.ammunition) + '\n'
-		st += FONE
+		st += Color.FONE
 		return st
 
 	@property
@@ -55,7 +55,7 @@ class Weapon(metaclass = ABCMeta):
 		if (self.full_damage < other.full_damage):
 			return (False)
 	
-
+	
 	def __cmp__(self, other:Weapon):
 		if (self.name == other.name):
 			return (0)
@@ -78,21 +78,21 @@ class 	Automat(Weapon):
 	
 	def shoot(self, obj):
 		if (self.ammunition <= 0):
-			print(RED + "END Ammunition!(" + FONE)
+			print(Color.RED + "END Ammunition!(" + Color.FONE)
 		else:
 			if (random.random() < self.accuracy):
 				obj.takeDamage(self)
 			else:
-				print(RED + "I didn't get it" + FONE)
+				print(Color.RED + "I didn't get it" + Color.FONE)
 			self.ammunition -= 1	
 			self.__recharge()
 
 	
 	# Private Methods
 	def __recharge(self):
-		print(PURPULE + "Recharge Automat")
+		print(Color.PURPULE + "Recharge Automat")
 		time.sleep(self.time_recharge)
-		print("Recharge Automat END\n" + FONE)
+		print("Recharge Automat END\n" + Color.FONE)
 
 class 	Automat_Gun(Weapon):
 	
@@ -106,21 +106,21 @@ class 	Automat_Gun(Weapon):
 	
 	def shoot(self, obj):
 		if (self.ammunition <= 0):
-			print(RED + "END Ammunition!(" + FONE)
+			print(Color.RED + "END Ammunition!(" + Color.FONE)
 		else:
 			if (random.random() < self.accuracy):
 				obj.takeDamage(self)
 			else:
-				print(RED + "I didn't get it" + FONE)
+				print(Color.RED + "I didn't get it" + Color.FONE)
 			self.ammunition -= 1	
 			self.__recharge()
 
 	
 	# Private Methods
 	def __recharge(self):
-		print(PURPULE + "Recharge Automat")
+		print(Color.PURPULE + "Recharge Automat")
 		time.sleep(self.time_recharge)
-		print("Recharge Automat END\n" + FONE)
+		print("Recharge Automat END\n" + Color.FONE)
 
 
 class 	Gun(Weapon):
@@ -134,20 +134,20 @@ class 	Gun(Weapon):
 	
 	def shoot(self, obj):
 		if (self.ammunition <= 0):
-			print(RED + "END Ammunition!(" + FONE)
+			print(Color.RED + "END Ammunition!(" + Color.FONE)
 		else:
 			if (random.random() < self.accuracy):
 				obj.takeDamage(self)
 			else:
-				print(RED + "I didn't get it" + FONE)
+				print(Color.RED + "I didn't get it" + Color.FONE)
 			self.ammunition -= 1	
 			self.__recharge()
-
+	## TODO:Заменить метод Recharge на декоратор
 	# Private Methods
 	def __recharge(self):
-		print(PURPULE + "Recharge Gun")
+		print(Color.PURPULE + "Recharge Gun")
 		time.sleep(self.time_recharge)
-		print("Recharge Automat END\n" + FONE)
+		print("Recharge Automat END\n" + Color.FONE)
 
 
 class Stick(Weapon):
@@ -161,16 +161,16 @@ class Stick(Weapon):
 	
 	def shoot(self, obj):
 		if (self.ammunition <= 0):
-			print(RED + "Stick is break!(" + FONE)
+			print(Color.RED + "Stick is break!(" + Color.FONE)
 		else:
 			obj.takeDamage(self)			
 			self.__recharge()
 
 	# Private Methods
 	def __recharge(self):
-		print(PURPULE + "Recharge Stick")
+		print(Color.PURPULE + "Recharge Stick")
 		time.sleep(self.time_recharge)
-		print("Recharge Srick END\n" + FONE)
+		print("Recharge Srick END\n" + Color.FONE)
 
 
 

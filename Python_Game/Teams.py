@@ -48,13 +48,13 @@ class Team(metaclass = ABCMeta):
 
 	def __str__(self):
 		st = ''
-		st += GRAY
+		st += Color.GRAY
 		st += "Name Team: " + self.name_team + '\n'
 		st += "Count person: " + str(self.cnt_team) + '\n'
 		st += "Full famage team: " + str(self.get_full_damage_team) + '\n'
 		st += "Live person: " + str(self.cnt_in_live) + '\n'
 		st += "Xp in team: " + str(self.get_xp_team) + '\n'
-		st += FONE
+		st += Color.FONE
 		return (st)
 
 
@@ -98,7 +98,7 @@ class FCB(Team):
 		return (ls[0])
 
 	def takedamage(self, team:List[Person]):
-		print(RED + self.name_team + ": AAA attack for me!!!!" + FONE)
+		print(Color.RED + self.name_team + ": AAA attack for me!!!!" + Color.FONE)
 		for i in team:
 			pers = self.__get_max_xp_pers
 			i.attack(pers)	
@@ -106,12 +106,12 @@ class FCB(Team):
 	def attack(self, obj:Team):
 		pers = self.__getmax_ammo_pers()
 		if (pers.weapon.full_damage <= 0):
-			print(RED + "Ammunition end(")
+			print(Color.RED + "Ammunition end(" + Color.FONE)
 		else:
 			ls = self.get_army_weapon()
 			cnt_pers = random.randint(1, self.__get_cnt_no_empty_pers)
 			mini_team = ls[:cnt_pers]
-			print(GREEN + self.name_team + ": Go to attack in " + str(cnt_pers) + " pers")
+			print(Color.GREEN + self.name_team + ": Go to attack in " + str(cnt_pers) + " pers" + Color.FONE)
 			obj.takedamage(mini_team)
 
 class Terrorist(Team):
@@ -151,7 +151,7 @@ class Terrorist(Team):
 		return (ls[0])
 
 	def takedamage(self, team:List[Person]):
-		print(RED + self.name_team + ": AAA attack for me!!!!" + FONE)
+		print(Color.RED + self.name_team + ": AAA attack for me!!!!" + Color.FONE)
 		for i in team:
 			pers = []
 			if self.cnt_team > 1:
@@ -163,10 +163,10 @@ class Terrorist(Team):
 	def attack(self, obj:Team):
 		pers = self.__getmax_ammo_pers()
 		if (pers.weapon.full_damage <= 0):
-			print(RED + "Ammunition end(")
+			print(Color.RED + "Ammunition end(")
 		else:
 			ls = self.arr_pers
 			cnt_pers = random.randint(1, self.cnt_team)
 			mini_team = ls[:cnt_pers]
-			print(GREEN + self.name_team + ": Go to attack in " + str(cnt_pers) + " pers")
+			print(Color.GREEN + self.name_team + ": Go to attack in " + str(cnt_pers) + " pers")
 			obj.takedamage(mini_team)

@@ -23,15 +23,16 @@ class Person(metaclass = ABCMeta):
 	
 	@abstractmethod
 	def takeDamage(self, amount):
-		pass	
+		pass
+
 	def __str__(self)->str:
 		st = ''
-		st += WHITE
+		st += Color.WHITE
 		st += 'Person: ' + self._names + '\n'
 		st += "Xp: " + str(self.xp) + '\n'
 		st += "Weapon: " + self.weapon.name + '\n'
 		st += "Live: " + str(self.live) + '\n'
-		st += FONE
+		st += Color.FONE
 		return (st)
 	
 	def __repr__(self) -> str:
@@ -58,7 +59,7 @@ class Сivilians(Person):
 	# Конструктор 	
 	def __init__(self, name:str, weapons:Weapon = Stick(), xp:int = 15):
 		if (xp < 0):
-			raise Game_Error("Xp < 100! :(")
+			raise Game_Error("Xp < 0! :(")
 		self.names = name
 		self.xp = xp
 		self.weapon = weapons
@@ -84,19 +85,19 @@ class Сivilians(Person):
 		self._names = value
 
 	def attack(self, person: Person):
-		print(GREEN + self._names + ": I am attack " + person.names + FONE)
+		print(Color.GREEN + self._names + ": I am attack " + person.names + Color.FONE)
 		self.weapon.shoot(person)
 
 	def takeDamage(self, weapons: Weapon):
 		self.xp = self.xp - weapons.damage
 		if (self.xp < 0):
 			self.xp = 0
-		print(RED)
+		print(Color.RED)
 		print(self.names + ": I am take damge from " + weapons.name)
 		print("My xp: " + str(self.xp))
-		print(FONE)
+		print(Color.FONE)
 		if (self.xp < 0):
-			print(RED + self.names + ": I am dead(" + FONE)
+			print(Color.RED + self.names + ": I am dead(" + Color.FONE)
 			self.live = False
 
 
@@ -136,23 +137,23 @@ class Hero(Person):
 
 
 	def attack(self, person: Person):
-		print(GREEN + self._names + ": I am attack " + person.names + FONE)
+		print(Color.GREEN + self._names + ": I am attack " + person.names + Color.FONE)
 		self.weapon.shoot(person)
 
 	def takeDamage(self, weapons: Weapon):
 
 		if (self.armor > weapons.damage):
-			print(GREEN + self.names + ": The armor worked !" + FONE)
+			print(Color.GREEN + self.names + ": The armor worked !" + Color.FONE)
 			return
 		self.xp = self.xp - (weapons.damage - self.armor)
 		if (self.xp <= 0):
 			self.xp = 0
-		print(RED)
+		print(Color.RED)
 		print(self.names + ": I am take damge from " + weapons.name)
 		print("My xp: " + str(self.xp))
-		print(FONE)
+		print(Color.FONE)
 		if (self.xp <= 0):
-			print(RED + self.names + ": I am dead(" + FONE)
+			print(Color.RED + self.names + ": I am dead(" + Color.FONE)
 			self.live = False
 
 
@@ -191,23 +192,23 @@ class Enemy(Person):
 
 
 	def attack(self, person: Person):
-		print(GREEN + self._names + ": I am attack " + person.names + FONE)
+		print(Color.GREEN + self._names + ": I am attack " + person.names + Color.FONE)
 		self.weapon.shoot(person)
 
 	def takeDamage(self, weapons: Weapon):
 		if (self.live == False):
 			return
 		if (self.armor > weapons.damage):
-			print(GREEN + self.names + ": The armor worked !" + FONE)
+			print(Color.GREEN + self.names + ": The armor worked !" + Color.FONE)
 			return
 		self.xp = self.xp - (weapons.damage - self.armor)
 		if (self.xp <= 0):
 			self.xp = 0
-		print(RED)
+		print(Color.RED)
 		print(self.names + ": I am take damge from " + weapons.name)
 		print("My xp: " + str(self.xp))
-		print(FONE)
+		print(Color.FONE)
 		if (self.xp <= 0):
-			print(RED + self.names + ": I am dead(" + FONE)
+			print(Color.RED + self.names + ": I am dead(" + Color.FONE)
 			self.live = False
 

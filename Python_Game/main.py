@@ -33,12 +33,12 @@ class Random_Game:
 		self.good_team.attack(self.bad_team)
 		if (self.check_win_good_team()):	
 			self.live_game = False
-			print(GREEN + self.good_team.name_team + " it's win!!! ")
+			print(Color.GREEN + self.good_team.name_team + " it's win!!! " + Color.FONE)
 			return
 		self.bad_team.attack(self.good_team)
 		if (self.check_win_bad_team()):
 			self.live_game = False
-			print(GREEN + self.bad_team.name_team + " it's win!!! ")
+			print(Color.GREEN + self.bad_team.name_team + " it's win!!! " + Color.FONE)
 			return
 		print(self.good_team)
 		print(self.bad_team)
@@ -46,8 +46,10 @@ class Random_Game:
 
 
 try:
-	game = Random_Game("Fcb", "Terror")
-	game.start_game()
+        game = Random_Game("Fcb", "Terror")
+        game.start_game()
+        while (True):
+            pass
 
 except  BaseException as e:
 	print("Error!")
