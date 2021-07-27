@@ -49,6 +49,9 @@ try:
 	# game = Random_Game("Fcb", "Terror")
 	# game.start_game()
 	gun = Gun()
+
+
+	
 	gun._recharge()	
 	# Как сделать чтобы выше не запускалось
 

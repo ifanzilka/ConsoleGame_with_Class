@@ -31,10 +31,13 @@ class Weapon(metaclass = ABCMeta):
 			return inner
 		return outer
 
+	# Тоже самое что и _recharg = recharge_print(_recharge)('')
 	@recharge_print('')
 	def _recharge(self):
 		time.sleep(self.time_recharge)
 
+	def shoot(self, obj):
+		pass
 
 	def __str__(self) -> str:
 		st = ''
