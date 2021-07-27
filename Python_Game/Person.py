@@ -68,8 +68,8 @@ class Сivilians(Person):
 	#Альтернативный конструктор
 	@classmethod
 	def standat_pers(cls):
-		Stick.counter += 1
-		return cls("Soldat " + str(Stick.counter), Gun())
+		Сivilians.counter += 1
+		return cls("Soldat " + str(Сivilians.counter), Gun())
 
 	# Функция-геттер (делаем его свойством)
 	@property
@@ -117,6 +117,7 @@ class Hero(Person):
 		self.armor = armor
 
 	#Альтернативный конструктор
+	# classmethod спользуется, когда вам нужно получить методы, не относящиеся к какому-либо конкретному экземпляру
 	@classmethod
 	def standat_pers(cls):
 		Hero.counter += 1

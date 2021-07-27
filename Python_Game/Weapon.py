@@ -16,11 +16,26 @@ class Weapon(metaclass = ABCMeta):
 		self.ammunition = 0
 		self.name = ''
 	
+	
 	@abstractmethod
 	def shoot(self, obj):
 		pass
 	
-	
+	def recharge_print(name):
+		def outer(func):
+			# инициализируем новую функцию
+			def inner(self):
+				print(Color.PURPULE + "Recharge " + self.name+ Color.FONE)
+				func(self)
+				print(Color.PURPULE + "Recharge " + self.name + " END\n" +  Color.FONE)
+			return inner
+		return outer
+
+	@recharge_print('')
+	def _recharge(self):
+		time.sleep(self.time_recharge)
+
+
 	def __str__(self) -> str:
 		st = ''
 		st += Color.GRAY
@@ -32,6 +47,7 @@ class Weapon(metaclass = ABCMeta):
 		st += Color.FONE
 		return st
 
+	#класс задающий сеттеры и геттеры
 	@property
 	def full_damage(self):
 		return (self.damage * self.ammunition)
@@ -65,7 +81,6 @@ class Weapon(metaclass = ABCMeta):
 			return (1)	
 
 
-
 class 	Automat(Weapon):
 	
 
@@ -85,14 +100,8 @@ class 	Automat(Weapon):
 			else:
 				print(Color.RED + "I didn't get it" + Color.FONE)
 			self.ammunition -= 1	
-			self.__recharge()
+			self._recharge()
 
-	
-	# Private Methods
-	def __recharge(self):
-		print(Color.PURPULE + "Recharge Automat")
-		time.sleep(self.time_recharge)
-		print("Recharge Automat END\n" + Color.FONE)
 
 class 	Automat_Gun(Weapon):
 	
@@ -113,14 +122,7 @@ class 	Automat_Gun(Weapon):
 			else:
 				print(Color.RED + "I didn't get it" + Color.FONE)
 			self.ammunition -= 1	
-			self.__recharge()
-
-	
-	# Private Methods
-	def __recharge(self):
-		print(Color.PURPULE + "Recharge Automat")
-		time.sleep(self.time_recharge)
-		print("Recharge Automat END\n" + Color.FONE)
+			self._recharge()
 
 
 class 	Gun(Weapon):
@@ -141,13 +143,7 @@ class 	Gun(Weapon):
 			else:
 				print(Color.RED + "I didn't get it" + Color.FONE)
 			self.ammunition -= 1	
-			self.__recharge()
-	## TODO:Заменить метод Recharge на декоратор
-	# Private Methods
-	def __recharge(self):
-		print(Color.PURPULE + "Recharge Gun")
-		time.sleep(self.time_recharge)
-		print("Recharge Automat END\n" + Color.FONE)
+			self._recharge()
 
 
 class Stick(Weapon):
@@ -163,14 +159,6 @@ class Stick(Weapon):
 		if (self.ammunition <= 0):
 			print(Color.RED + "Stick is break!(" + Color.FONE)
 		else:
-			obj.takeDamage(self)			
-			self.__recharge()
-
-	# Private Methods
-	def __recharge(self):
-		print(Color.PURPULE + "Recharge Stick")
-		time.sleep(self.time_recharge)
-		print("Recharge Srick END\n" + Color.FONE)
-
-
-
+			obj.takeDamage(self)
+			self.ammunition -= 1		
+			self._recharge()
