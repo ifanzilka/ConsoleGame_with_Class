@@ -1,3 +1,5 @@
+#! /usr/local/bin/python3 
+
 from random import randint
 from typing import ClassVar
 from Weapon import *
@@ -46,13 +48,12 @@ class Random_Game:
 
 
 try:
-	# game = Random_Game("Fcb", "Terror")
-	# game.start_game()
-	gun = Gun()
-
-
+	game = Random_Game("Fcb", "Terror")
+	game.start_game()
 	
-	gun._recharge()	
+	
+	# gun = Gun()
+	# gun._recharge()	
 	# Как сделать чтобы выше не запускалось
 
 except  BaseException as e:
