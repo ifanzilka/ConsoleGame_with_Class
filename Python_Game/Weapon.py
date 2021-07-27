@@ -34,6 +34,7 @@ class Weapon(metaclass = ABCMeta):
 	# Тоже самое что и _recharg = recharge_print(_recharge)('')
 	@recharge_print('')
 	def _recharge(self):
+		"""Call fun after shoot"""
 		time.sleep(self.time_recharge)
 
 	def shoot(self, obj):

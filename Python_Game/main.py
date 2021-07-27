@@ -6,6 +6,8 @@ from Weapon import *
 from Person import *
 from Teams  import *
 
+import sys
+
 class Random_Game:
 
 	def __init__(self, team1, team2):
@@ -48,17 +50,17 @@ class Random_Game:
 
 
 try:
-	game = Random_Game("Fcb", "Terror")
-	game.start_game()
+	#game = Random_Game("Fcb", "Terror")
+	#game.start_game()
+	pers  = Hero('dsf', Gun(), xp = -2)
 	
-	
-	# gun = Gun()
-	# gun._recharge()	
+	#gun = Gun()
+	#gun._recharge()	
 	# Как сделать чтобы выше не запускалось
 
 except  BaseException as e:
-	print("Error!")
-	print(e)
+	print_err(e)
+
 
 
 # # Принимает адресс на функциию ниже него
