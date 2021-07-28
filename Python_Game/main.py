@@ -48,159 +48,28 @@ class Random_Game:
 		print(self.bad_team)
 
 
+def main():
+	
+	if (len(sys.argv) >= 2):
+		game = Random_Game("Fcb", "Terror")
+		game.start_game()
 
-try:
-	#game = Random_Game("Fcb", "Terror")
-	#game.start_game()
+	#print(dir(Weapon()))
 	#pers  = Hero('dsf', Gun(), xp = -2)
 	#print(help(print_err))
 
-	print(1/0)
+	while(1):
+		pass
+	#print(1/0)
 
 	#gun = Gun()
 	#gun._recharge()	
 	# Как сделать чтобы выше не запускалось
 
+try:
+	if __name__ == "__main__":
+		main()
+		sys.exit()
+
 except  BaseException as e:
 	print_err(e)
-
-
-
-# # Принимает адресс на функциию ниже него
-# # def decorate(funct):
-# # 	def wrapper(value):
-# # 		print("Wrapper")
-# # 		funct(value)
-# # 	return wrapper	
-
-# # # def decorate2(funct):
-# # # 	def wrapper2():
-# # # 		print("Wrapper2")
-# # # 		funct()
-# # # 	return wrapper2	
-
-
-
-# # @decorate
-# # #@decorate2
-# # def test(value):
-# # 	print('Test' + value)
-
-
-# # test1 = decorate(test)
-
-# # #Аналогично
-# # test("value")
-
-
-# #Приходит функция say
-# # декортаоры нужны чтобы добавить функционала в функцию
-# # def decorator(func):
-	
-# # 	def inner():
-# # 		print("Start decorator")
-# # 		func()
-# # 		print("End decorator")
-# # 	return inner
-
-# # def say():
-# # 	print("Hello world")
-
-
-# # def buy():
-# # 	print("Buy world")
-
-
-
-# # # d = decorator(say)
-# # # print(d)
-# # # d() # декоратор + функция декоратора
-
-# # # # Хотим расширить say
-
-# # # say - link in inner
-# # say = decorator(say)
-# # #print(say)
-# # buy = decorator(buy)
-# # buy()
-
-# # def decorator(func):
-	
-# # 	def inner(n, m):
-# # 		print("Start decorator")
-# # 		func(n, m)
-# # 		print("End decorator")
-# # 	return inner
-
-# # def say(name, surname):
-# # 	print("Hello ", name, surname)
-
-# # def decorator(func):
-	
-# # 	def inner(*args, **kwargs):
-# # 		print("Start decorator")
-# # 		func(*args, **kwargs)
-# # 		print("End decorator")
-# # 	return inner
-
-# # def say(name, surname, age):
-# # 	print("Hello ", name, surname, age)
-
-
-
-# # def header(func):
-	
-# # 	def inner(*args, **kwargs):
-# # 		print("<h1>")
-# # 		func(*args, **kwargs)
-# # 		print("</h1>")
-# # 	return inner
-
-
-# # def table(func):
-	
-# # 	def inner(*args, **kwargs):
-# # 		print("<table>")
-# # 		func(*args, **kwargs)
-# # 		print("</table>")
-# # 	return inner
-
-# # def say(name, surname, age):
-# # 	print("Hello ", name, surname, age)
-
-
-# # say = table(header(say))
-# # say("vasya", 'ivanov', 30)
-
-# def header(argv):
-# 	print("argv_h: " + argv)
-# 	def outer(func):
-
-# 		def inner(*args, **kwargs):
-# 			print("<" + argv+ ">")
-# 			func(*args, **kwargs)
-# 			print("</" + argv + ">")
-# 		return inner
-# 	return outer
-
-# def table(argv):
-# 	print("argv_t: " + argv)
-# 	def outer(func):
-# 	# инициализируем новую функцию
-# 		def inner(*args, **kwargs):
-# 			print("<"+ argv + ">")
-# 			func(*args, **kwargs)
-# 			print("</" + argv + ">")
-# 		return inner
-# 	return outer	
-
-
-
-# @table('table')
-# @header('h1') #say =  header(say)
-# def say(name, surname, age):
-# 	print("Hello ", name, surname, age)
-
-
-# #say = table(header(say))
-# say("vasya", 'ivanov', 30)

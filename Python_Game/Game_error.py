@@ -11,6 +11,8 @@ class Game_Error(Exception):
 	def __str__(self):
 		return self.txt
 
+
+
 def change_fd(argv):
 	def outer(func):
 		def inner(*args, **kwargs):
