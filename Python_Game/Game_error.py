@@ -1,6 +1,8 @@
 from Color import Color
 import sys
 
+fd_err = True
+
 class Game_Error(Exception):
 	def __init__(self, text):
 		tmp = Color.RED + text + Color.FONE
@@ -25,13 +27,10 @@ def change_fd(argv):
 		# Coments
 		inner.__doc__ = func.__doc__
 		
-		# if (gv.change_fd_err == True):
-		# 	print("ok")
-		# 	return inner
-		# else:
-		# 	print("ko")
-		# 	return func
-		return inner
+		if (fd_err == True):
+			return inner
+		else:
+			return func
 
 	return outer	
 
