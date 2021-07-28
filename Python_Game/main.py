@@ -52,8 +52,11 @@ class Random_Game:
 try:
 	#game = Random_Game("Fcb", "Terror")
 	#game.start_game()
-	pers  = Hero('dsf', Gun(), xp = -2)
-	
+	#pers  = Hero('dsf', Gun(), xp = -2)
+	#print(help(print_err))
+
+	print(1/0)
+
 	#gun = Gun()
 	#gun._recharge()	
 	# Как сделать чтобы выше не запускалось
