@@ -6,7 +6,8 @@ from Weapon import *
 from Person import *
 from Teams  import *
 
-import sys
+import sys, os
+
 
 class Random_Game:
 
@@ -53,7 +54,8 @@ def main():
 	if (len(sys.argv) >= 2):
 		game = Random_Game("Fcb", "Terror")
 		game.start_game()
-
+	sys.exit(42)
+	
 	#print(dir(Weapon()))
 	#pers  = Hero('dsf', Gun(), xp = -2)
 	#print(help(print_err))
@@ -65,11 +67,12 @@ def main():
 	#gun = Gun()
 	#gun._recharge()	
 	# Как сделать чтобы выше не запускалось
-
 try:
 	if __name__ == "__main__":
 		main()
-		sys.exit()
 
 except  BaseException as e:
 	print_err(e)
+	if (type(e) == SystemExit):
+		sys.exit(e)
+	
